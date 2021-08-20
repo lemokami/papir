@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { useHistory, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { BASE64REGEX } from '../constants';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { useHistory, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { BASE64REGEX } from "../constants";
 
 const StyledMessage = styled.div`
   font-weight: normal;
   color: black;
+  min-height: 50vh;
 `;
 
 const Paper = () => {
   let { message } = useParams<{ message: string }>();
-  const [decodedMessage, setDecodedMessage] = useState<string | ''>('');
+  const [decodedMessage, setDecodedMessage] = useState<string | "">("");
   const history = useHistory();
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const Paper = () => {
         throw Error;
       }
     } catch (err) {
-      history.push('/404');
+      history.push("/404");
     }
   }, []);
 
@@ -30,8 +31,8 @@ const Paper = () => {
     <>
       <Helmet>
         <title>Papír | Here's a message for you</title>
-        <meta property='og:title' content="Papír | Here's a message for you" />
-        <meta name='twitter:title' content="Papír | Here's a message for you" />
+        <meta property="og:title" content="Papír | Here's a message for you" />
+        <meta name="twitter:title" content="Papír | Here's a message for you" />
       </Helmet>
       <StyledMessage>{decodedMessage}</StyledMessage>
     </>

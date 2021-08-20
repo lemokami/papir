@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { StyledLink } from '../components/Navbar';
+import React from "react";
+import styled from "styled-components";
+import { StyledLink } from "../components/Navbar";
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   gap: 1.25rem;
 `;
 
-const HomeButton = styled(StyledLink)`
+export const HomeButton = styled(StyledLink)`
   background-color: black;
   padding: 0.6rem 1.5rem;
   color: white;
@@ -19,11 +19,17 @@ const HomeButton = styled(StyledLink)`
   font-size: 0.8rem;
 `;
 
+const ErrorImage = styled.img`
+  @media only screen and (max-width: 600px) {
+    width: 400px;
+  }
+`;
+
 const NotFound = () => {
   return (
     <Wrapper>
-      <img src='/404-meme.jpeg' alt='somethings wrong' />
-      <HomeButton to='/'>Create a Message</HomeButton>
+      <ErrorImage src="/404-meme.jpeg" alt="somethings wrong" />
+      <HomeButton to="/">Create a Message</HomeButton>
     </Wrapper>
   );
 };

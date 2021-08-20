@@ -3,11 +3,19 @@ import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { BASE64REGEX } from "../constants";
+import { HomeButton } from "./404";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const StyledMessage = styled.div`
   font-weight: normal;
   color: black;
   min-height: 50vh;
+  align-self: flex-start;
 `;
 
 const Paper = () => {
@@ -34,7 +42,10 @@ const Paper = () => {
         <meta property="og:title" content="Papír | Here's a message for you" />
         <meta name="twitter:title" content="Papír | Here's a message for you" />
       </Helmet>
-      <StyledMessage>{decodedMessage}</StyledMessage>
+      <Wrapper>
+        <StyledMessage>{decodedMessage}</StyledMessage>
+        <HomeButton to="/">Create a Message</HomeButton>
+      </Wrapper>
     </>
   );
 };

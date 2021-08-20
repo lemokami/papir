@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
@@ -50,22 +50,31 @@ const StyledShareButton = styled.button`
 `;
 
 const Home = () => {
-  const [message, setMessage] = useState<string | ''>('');
+  const [message, setMessage] = useState<string | "">("");
 
   const handleTextInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(event.target.value);
   };
   const handleUserShare = () => {
-    navigator.clipboard.writeText(window.location.href + btoa(message));
+    const sharableUrl = window.location.href + btoa(message);
+
+    if (navigator.share) {
+      navigator.share({
+        title: "Papír | Here's a message for you",
+        url: sharableUrl,
+      });
+    } else {
+      navigator.clipboard.writeText(sharableUrl);
+    }
   };
   return (
     <Wrapper>
       <LabelDiv>
-        <label htmlFor='message'>Message</label>
+        <label htmlFor="message">Message</label>
         {/* <TextCounter>{`${message.trim().length}/250`}</TextCounter> */}
       </LabelDiv>
       <StyledInput
-        id='message'
+        id="message"
         value={message}
         onChange={(e) => handleTextInput(e)}
       />

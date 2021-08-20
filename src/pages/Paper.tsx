@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { useHistory, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { BASE64REGEX } from '../constants';
 
 const StyledMessage = styled.div`
@@ -25,7 +26,16 @@ const Paper = () => {
     }
   }, []);
 
-  return <StyledMessage>{decodedMessage}</StyledMessage>;
+  return (
+    <>
+      <Helmet>
+        <title>Papír | Here's a message for you</title>
+        <meta property='og:title' content="Papír | Here's a message for you" />
+        <meta name='twitter:title' content="Papír | Here's a message for you" />
+      </Helmet>
+      <StyledMessage>{decodedMessage}</StyledMessage>
+    </>
+  );
 };
 
 export default Paper;

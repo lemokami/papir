@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { BASE64REGEX } from "../constants";
+import { Base64 } from "js-base64";
 import { HomeButton } from "./404";
 
 const Wrapper = styled.div`
@@ -25,8 +25,8 @@ const Paper = () => {
 
   useEffect(() => {
     try {
-      if (BASE64REGEX.test(message)) {
-        setDecodedMessage(atob(message)); // decoding the message and storing it
+      if (Base64.isValid(message)) {
+        setDecodedMessage(Base64.decode(message)); // decoding the message and storing it
       } else {
         throw Error;
       }

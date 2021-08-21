@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { encode } from "js-base64";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -56,7 +57,7 @@ const Home = () => {
     setMessage(event.target.value);
   };
   const handleUserShare = () => {
-    const sharableUrl = window.location.href + btoa(message);
+    const sharableUrl = window.location.href + encode(message);
 
     if (navigator.share) {
       navigator.share({

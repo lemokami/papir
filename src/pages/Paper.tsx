@@ -9,13 +9,17 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
+  padding: 10px;
 `;
 
 const StyledMessage = styled.div`
-  font-weight: normal;
-  color: black;
-  min-height: 50vh;
-  align-self: flex-start;
+  color: #9b9b9b;
+  font-weight: 500;
+  font-size: 1rem;
+  font-style: italic;
+  text-align: center;
+  min-height: 10vh;
 `;
 
 const Paper = () => {
@@ -43,7 +47,7 @@ const Paper = () => {
         <meta name="twitter:title" content="Papír | Here's a message for you" />
       </Helmet>
       <Wrapper>
-        <StyledMessage>{decodedMessage}</StyledMessage>
+        <StyledMessage>"{decodedMessage}"</StyledMessage>
         <HomeButton to="/">Create a Message</HomeButton>
       </Wrapper>
     </>

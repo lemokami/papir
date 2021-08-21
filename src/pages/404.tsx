@@ -20,8 +20,8 @@ export const HomeButton = styled(StyledLink)`
 `;
 
 const ErrorImage = styled.img`
-  @media only screen and (max-width: 600px) {
-    width: 400px;
+  @media only screen and (max-width: 640px) {
+    width: 300px;
   }
 `;
 

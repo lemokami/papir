@@ -52,10 +52,12 @@ const StyledShareButton = styled.button`
 
 const Home = () => {
   const [message, setMessage] = useState<string | "">("");
+  const [buttonText, setButtonText] = useState("Share your Message");
 
   const handleTextInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(event.target.value);
   };
+
   const handleUserShare = () => {
     const sharableUrl = window.location.href + encode(message);
 
@@ -65,6 +67,11 @@ const Home = () => {
         url: sharableUrl,
       });
     } else {
+      setTimeout(() => {
+        setButtonText("Share your Message");
+      }, 2500);
+
+      setButtonText("Copied to your clipboard");
       navigator.clipboard.writeText(sharableUrl);
     }
   };
@@ -80,7 +87,7 @@ const Home = () => {
         onChange={(e) => handleTextInput(e)}
       />
       <StyledShareButton onClick={handleUserShare}>
-        Share your Message
+        {buttonText}
       </StyledShareButton>
     </Wrapper>
   );
